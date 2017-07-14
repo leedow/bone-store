@@ -27,7 +27,7 @@ easystore.add({
 // add single data
 easystore.add('keyName', 'value')
 // add expired data
-easystore.add('keyName', 'value', 1000) // The data will be destoryed in 10s
+easystore.add('keyName', 'value', 10) // The data will be destoryed in 10s
 ```
 
 ## Read data

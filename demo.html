@@ -1,118 +1,120 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Easystore</title>
-    <script type="text/javascript" src="./index.js"></script>
-    <style media="screen">
-      body{
-        text-align: center;
-      }
-      #logo{
-        margin:40px 0 10px 0;
-      }
-      #intro{
-        color: #999;
-        font-size: 14px;
-        font-weight: normal;
-        margin-top:0px;
-      }
-      .box{
-        padding:10px 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="">
-      <h1 id="logo">Easystore</h1>
-      <h2 id="intro">A tool of localstorage</h2>
-    </div>
-    <div class="box">
-      <button type="button"   onclick="save('number')">Save Number</button>
-      <button type="button"   onclick="read('number')">Read Number</button>
-      <button type="button"   onclick="del('number')">Delete Number</button>
-      <div id="number"></div>
-    </div>
 
-    <div class="box">
-      <button type="button"   onclick="save('string')">Save String</button>
-      <button type="button"   onclick="read('string')">Read String</button>
-      <button type="button"   onclick="del('string')">Delete String</button>
-      <div id="string"></div>
-    </div>
+<head>
+  <meta charset="utf-8">
+  <title>Easystore</title>
+  <script type="text/javascript" src="./index.js"></script>
+  <style media="screen">
+    body {
+      text-align: center;
+    }
 
-    <div class="box">
-      <button type="button"   onclick="save('boolean')">Save Boolean</button>
-      <button type="button"   onclick="read('boolean')">Read Boolean</button>
-      <button type="button"   onclick="del('boolean')">Delete Boolean</button>
-      <div id="boolean"></div>
-    </div>
+    #logo {
+      margin: 40px 0 10px 0;
+    }
 
-    <div class="box">
-      <button type="button"   onclick="save('object')">Save Object</button>
-      <button type="button"   onclick="read('object')">Read Object</button>
-      <button type="button"   onclick="del('object')">Delete Object</button>
-      <div id="object"></div>
-    </div>
+    #intro {
+      color: #999;
+      font-size: 14px;
+      font-weight: normal;
+      margin-top: 0px;
+    }
 
+    .box {
+      padding: 10px 0;
+    }
+  </style>
+</head>
 
-    <div class="box">
-      <button type="button"   onclick="save('expire')">Save expire data</button>
-      <button type="button"   onclick="read('expire')">Read expire data</button>
-      <button type="button"   onclick="del('expire')">Delete expire data</button>
-      <div id="expire"></div>
-    </div>
+<body>
+  <div class="">
+    <h1 id="logo">Easystore</h1>
+    <h2 id="intro">A tool of localstorage</h2>
+  </div>
+  <div class="box">
+    <button type="button" onclick="save('number')">Save Number</button>
+    <button type="button" onclick="read('number')">Read Number</button>
+    <button type="button" onclick="del('number')">Delete Number</button>
+    <div id="number"></div>
+  </div>
 
-    <div class="box">
-      <button type="button"   onclick="clearAll()">Clear All</button>
+  <div class="box">
+    <button type="button" onclick="save('string')">Save String</button>
+    <button type="button" onclick="read('string')">Read String</button>
+    <button type="button" onclick="del('string')">Delete String</button>
+    <div id="string"></div>
+  </div>
 
-    </div>
+  <div class="box">
+    <button type="button" onclick="save('boolean')">Save Boolean</button>
+    <button type="button" onclick="read('boolean')">Read Boolean</button>
+    <button type="button" onclick="del('boolean')">Delete Boolean</button>
+    <div id="boolean"></div>
+  </div>
+
+  <div class="box">
+    <button type="button" onclick="save('object')">Save Object</button>
+    <button type="button" onclick="read('object')">Read Object</button>
+    <button type="button" onclick="del('object')">Delete Object</button>
+    <div id="object"></div>
+  </div>
 
 
+  <div class="box">
+    <button type="button" onclick="save('expire')">Save expire data</button>
+    <button type="button" onclick="read('expire')">Read expire data</button>
+    <button type="button" onclick="del('expire')">Delete expire data</button>
+    <div id="expire"></div>
+  </div>
 
-    <div id="log">
+  <div class="box">
+    <button type="button" onclick="clearAll()">Clear All</button>
+  </div>
 
-    </div>
 
-    <script type="text/javascript">
-      var keys = {
-        'number': new Date().getTime(),
-        'string': 'Hello from easystore',
-        'boolean': true,
-        'object': {msg:'Hello from easystore'},
-        'expire': 'Destory in 10s'
-      }
+  <script type="text/javascript">
+    var keys = {
+      'number': new Date().getTime(),
+      'string': 'Hello from easystore',
+      'boolean': true,
+      'object': {
+        msg: 'Hello from easystore'
+      },
+      'expire': 'Destory in 10s'
+    }
 
-      function clearAll(){
-        easystore.clear()
-        init()
-      }
-
-      function save(key){
-        var data = {}
-        data[key] = keys[key]
-        easystore.add(data)
-      }
-
-      function del(key){
-        easystore.del(key)
-        init()
-      }
-
-      function read(key){
-        d = d2 = easystore.get(key)
-        if(typeof d === 'object')
-          d2 = JSON.stringify(d)
-        document.getElementById(key).innerHTML = d2||'No data'
-        return d
-      }
-
-      function init(){
-        for(var key in keys){
-          read(key)
-        }
-      }
+    function clearAll() {
+      easystore.clear()
       init()
-    </script>
-  </body>
+    }
+
+    function save(key) {
+      var data = {}
+      data[key] = keys[key]
+      easystore.add(data)
+    }
+
+    function del(key) {
+      easystore.del(key)
+      init()
+    }
+
+    function read(key) {
+      d = d2 = easystore.get(key)
+      if (typeof d === 'object')
+        d2 = JSON.stringify(d)
+      document.getElementById(key).innerHTML = d2 || 'No data'
+      return d
+    }
+
+    function init() {
+      for (var key in keys) {
+        read(key)
+      }
+    }
+    init()
+  </script>
+</body>
+
 </html>
