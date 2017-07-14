@@ -2,11 +2,20 @@
   var easystore = {
     // switch of console.log
     log: true,
-    // save data into localstorage
-  	add: function(data){
-			for(key in data){
-				this._save(key, data[key])
-			}
+    /**
+     * @params key, value, expire | data
+     */
+  	add: function(d1, d2, e){
+      var alen = arguments.length
+
+      if(alen === 1){
+        for(key in d1){
+          this._save(key, d1[key], 0)
+        }
+      } else {
+        this._save(d1, d2, e||0)
+      }
+
   	},
   	get: function(key){
       if(!this._check()) return
@@ -15,9 +24,11 @@
       var result = ''
 
       try{
-
         data = JSON.parse(data)
-
+        if(new Date().getTime()/1000 - data.addtime > data.expire && data.expire>0){
+          this.del(key)
+          return false
+        }
         switch(data.type){
           case 'number': {
             result = data.value - 0
@@ -40,20 +51,29 @@
           }
         }
       } catch(e) {
-
-        this._log('Read data: '+key+' failed')
+        this._log(''+key+' dose not exsit')
+        return false
       }
 
       return result
   	},
+    del: function(key){
+      localStorage.removeItem(key)
+    },
+    clear: function(){
+      localStorage.clear()
+    },
     // save data and tag type
-    _save: function(key, value){
+    _save: function(key, value, expire){
       if(!this._check()) return
 
       var str = JSON.stringify({
         value: value,
-        type: typeof value
+        type: typeof value,
+        addtime: parseInt(new Date().getTime()/1000),
+        expire: expire||0
       })
+
       localStorage[key] =  str
       this._log('saving success:' + key + ' - ' + localStorage[key])
     },
@@ -65,22 +85,17 @@
   			return false;
   		}
   	},
-    _isArray: function(o){
-      return Object.prototype.toString.call(o) === '[object Array]'
-    },
     _log: function(msg){
       if(this.log){
-        console.log('Easystore ', msg)
+        console.log('Easystore:', msg)
       }
     }
   }
 
   if(typeof module != 'undefined'){
-      module.exports = easystore
+    module.exports = easystore
   } else {
     window.easystore = easystore
   }
-
-
 
 })()
