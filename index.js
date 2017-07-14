@@ -7,14 +7,20 @@
      */
   	add: function(d1, d2, e){
       var alen = arguments.length
-
-      if(alen === 1){
-        for(key in d1){
-          this._save(key, d1[key], 0)
+      try{
+        if(alen === 1){
+          for(key in d1){
+            this._save(key, d1[key], 0)
+          }
+        } else {
+          this._save(d1, d2, e||0)
         }
-      } else {
-        this._save(d1, d2, e||0)
+      } catch(e){
+        this._log('add failed')
+        return false
       }
+
+      return true
 
   	},
   	get: function(key){
