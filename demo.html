@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DEMO for Easystore</title>
+    <script type="text/javascript" src="./index.js"></script>
+  </head>
+  <body>
+    <div class="">
+      <button type="button"   onclick="saveNumber()">Save Number</button>
+      <button type="button"   onclick="readNumber()">Read Number</button>
+    </div>
+
+    <div class="">
+      <button type="button"   onclick="saveString()">Save Number</button>
+      <button type="button"   onclick="readString()">Read Number</button>
+    </div>
+
+    <div class="">
+      <button type="button"   onclick="saveBoolean()">Save Boolean</button>
+      <button type="button"   onclick="readBoolean()">Read Boolean</button>
+    </div>
+
+    <div class="">
+      <button type="button"   onclick="saveObject()">Save Object</button>
+      <button type="button"   onclick="readObject()">Read Object</button>
+    </div>
+
+
+    <div id="log">
+
+    </div>
+
+    <script type="text/javascript">
+      function saveNumber(){
+        save('testnumber', new Date().getTime())
+      }
+
+      function readNumber(){
+        var d = read('testnumber')
+        console.log(d)
+      }
+
+      function saveString(){
+        save('teststring', 'hello from easystore')
+      }
+
+      function readString(){
+        var d = read('teststring')
+        console.log(d)
+      }
+
+
+      function saveBoolean(){
+        save('testboolean', true)
+      }
+
+      function readBoolean(){
+        var d = read('testboolean')
+        console.log(d)
+      }
+
+
+      function saveObject(){
+        save('testobject', {
+          msg: 'hello from easystore',
+          count: 1
+        })
+      }
+
+      function readObject(){
+        var d = read('testobject')
+        console.log(d)
+      }
+
+
+
+
+      function save(key, value){
+        var data = {}
+        data[key] = value
+        easystore.add(data)
+      }
+
+      function read(key){
+        return easystore.get(key)
+
+      }
+    </script>
+  </body>
+</html>
