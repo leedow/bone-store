@@ -1,5 +1,5 @@
 (function() {
-  var easystore = {
+  var bonestore = {
     // switch of console.log
     log: true,
     /**
@@ -104,9 +104,9 @@
   }
 
   if (typeof module != 'undefined') {
-    module.exports = easystore
+    module.exports = bonestore
   } else {
-    window.easystore = easystore
+    window.bonestore = bonestore
   }
 
 })()

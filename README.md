@@ -1,46 +1,46 @@
-# Easystore
+# Bone-store
 
 ## Install
 
 ```
-npm install easystore --save
+npm install bone-store --save
 ```
 
 ## Quik start
 ```
-<script type="text/javascript" src="./easystore.js"></script>
+<script type="text/javascript" src="./bonestore.js"></script>
 ```
 or
 ```
-import easystore from 'easystore'
+import bonestore from 'bone-store'
 ```
 
 ## Save data
 ```
 // add multiple data
-easystore.add({
+bonestore.add({
     'number': 1,
     'string': 'value',
     'object': {msg:'value'},
     'boolean': true
 })
 // add single data
-easystore.add('keyName', 'value')
+bonestore.add('keyName', 'value')
 // add expired data
-easystore.add('keyName', 'value', 10) // The data will be destoryed in 10s
+bonestore.add('keyName', 'value', 10) // The data will be destoryed in 10s
 ```
 
 ## Read data
 ```
-easystore.get('keyName')
+bonestore.get('keyName')
 ```
 
 ## Delete data
 ```
-easystore.del('keyName')
+bonestore.del('keyName')
 ```
 
 ## Delete all data
 ```
-easystore.clear()
+bonestore.clear()
 ```

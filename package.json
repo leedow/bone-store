@@ -1,6 +1,6 @@
 {
-  "name": "easystore",
-  "version": "1.0.0",
+  "name": "bone-store",
+  "version": "1.0.1",
   "description": "A tool of localstorage",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leedow/easystore.git"
+    "url": "git+https://github.com/leedow/bone-store.git"
   },
   "keywords": [
     "localstorage"
@@ -17,9 +17,9 @@
   "author": "leedow",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/leedow/easystore/issues"
+    "url": "https://github.com/leedow/bone-store/issues"
   },
-  "homepage": "https://github.com/leedow/easystore#readme",
+  "homepage": "https://github.com/leedow/bone-store#readme",
   "devDependencies": {
     "jasmine-core": "^2.6.4",
     "karma": "^1.7.0",

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Easystore</title>
+  <title>Bone-store</title>
   <script type="text/javascript" src="./index.js"></script>
   <style media="screen">
     body {
@@ -29,7 +29,7 @@
 
 <body>
   <div class="">
-    <h1 id="logo">Easystore</h1>
+    <h1 id="logo">bonestore</h1>
     <h2 id="intro">A tool of localstorage</h2>
   </div>
   <div class="box">
@@ -76,32 +76,32 @@
   <script type="text/javascript">
     var keys = {
       'number': new Date().getTime(),
-      'string': 'Hello from easystore',
+      'string': 'Hello from bonestore',
       'boolean': true,
       'object': {
-        msg: 'Hello from easystore'
+        msg: 'Hello from bonestore'
       },
       'expire': 'Destory in 10s'
     }
 
     function clearAll() {
-      easystore.clear()
+      bonestore.clear()
       init()
     }
 
     function save(key) {
       var data = {}
       data[key] = keys[key]
-      easystore.add(data)
+      bonestore.add(data)
     }
 
     function del(key) {
-      easystore.del(key)
+      bonestore.del(key)
       init()
     }
 
     function read(key) {
-      d = d2 = easystore.get(key)
+      d = d2 = bonestore.get(key)
       if (typeof d === 'object')
         d2 = JSON.stringify(d)
       document.getElementById(key).innerHTML = d2 || 'No data'
