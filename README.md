@@ -8,7 +8,7 @@ npm install bone-store --save
 
 ## Quik start
 ```
-<script type="text/javascript" src="./bonestore.js"></script>
+<script type="text/javascript" src="./bonestore.min.js"></script>
 ```
 or
 ```
