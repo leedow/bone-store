@@ -31,6 +31,7 @@ bonestore.add('keyName', 'value', 10) // The data will be destoryed in 10s
 ```
 
 ## Read data
+Return `false` if data dose not exsit
 ```javascript
 bonestore.get('keyName')
 ```
