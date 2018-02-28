@@ -1,9 +1,10 @@
 {
   "name": "bone-store",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A tool of localstorage",
   "main": "index.js",
   "scripts": {
+    "build": "uglifyjs index.js -o bonestore.min.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "karma": "./node_modules/karma/bin/karma"
   },

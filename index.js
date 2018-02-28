@@ -62,7 +62,7 @@
             }
         }
       } catch (e) {
-        this._log('' + key + ' dose not exsit')
+        this._log('' + key + ' dose not exist')
         return false
       }
 
@@ -89,7 +89,8 @@
       this._log('saving success:' + key + ' - ' + localStorage[key])
     },
     _check: function() {
-      if (window.localStorage) {
+      if (typeof window!='undefined' && window.localStorage) {
+
         return true;
       } else {
         this._log('localStorage unsupported');

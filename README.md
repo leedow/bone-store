@@ -2,7 +2,7 @@
 
 ## Install
 
-```
+```shell
 npm install bone-store --save
 ```
 
@@ -31,7 +31,7 @@ bonestore.add('keyName', 'value', 10) // The data will be destoryed in 10s
 ```
 
 ## Read data
-Return `false` if data dose not exsit
+Return `false` if data dose not exist
 ```javascript
 bonestore.get('keyName')
 ```
